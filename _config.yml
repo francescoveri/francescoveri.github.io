@@ -23,7 +23,7 @@ repository               : "francescoveri/francescoveri.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "portrait_VERI600.png"
   name             : "Francesco Veri"
   pronouns         :  
   bio              : "Political scientist studying deliberative democracy, political behaviour, democratic innovations, and AI & democracy."
