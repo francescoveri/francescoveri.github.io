@@ -10,4 +10,4 @@ location: "Australia"
 
 **Level:** BA/MA students
 
-Course examining the relationship between security, technology, political behaviour, and contemporary governance.
+Course examining the relationship between security, artificial intelligence, political behaviour, and contemporary governance.
