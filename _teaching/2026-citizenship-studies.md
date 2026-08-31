@@ -2,7 +2,7 @@
 title: "Citizenship Studies"
 collection: teaching
 type: "University course"
-permalink: /teaching/2026-citizenship-and-digital-society
+permalink: /teaching/2026-citizenship-studies
 venue: "University of Lucerne"
 date: 2026-09-01
 location: "Lucerne, Switzerland"
