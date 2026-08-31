@@ -1,5 +1,5 @@
 ---
-title: "In Need for Democratic Innovations"
+title: "Crisis of Democracy"
 collection: teaching
 type: "University course"
 permalink: /teaching/2025-in-need-for-democratic-innovations
