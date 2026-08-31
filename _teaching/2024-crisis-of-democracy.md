@@ -1,8 +1,8 @@
 ---
-title: "In Need for Democratic Innovations"
+title: "Crisis of democracy"
 collection: teaching
 type: "University course"
-permalink: /teaching/2024-in-need-for-democratic-innovations
+permalink: /teaching/2024-crisis-of-democracy
 venue: "University of Zurich"
 date: 2024-09-01
 location: "Zurich, Switzerland"
