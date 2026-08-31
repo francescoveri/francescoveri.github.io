@@ -6,4 +6,5 @@ permalink: /publication/exploring-methodological-challenges-in-deliberative-demo
 date: 2022-01-01
 venue: "Comparative Sociology"
 citation: "Veri, Francesco (2022). Exploring Methodological Challenges in Deliberative Democracy: a Configurational Meta-Analysis? Comparative Sociology, 21(2), 200-247."
+paperurl: "https://brill.com/view/journals/coso/21/2/article-p200_2.xml"
 ---
