@@ -6,4 +6,5 @@ permalink: /publication/the-necessary-and-sufficient-conditions-for-retirement-f
 date: 2022-01-01
 venue: "Economics and Sociology"
 citation: "Zeka, Bomikaze and Francesco Veri (2022). The necessary and sufficient conditions for retirement funding adequacy: A fuzzy set analysis of South Africa. Economics and Sociology, 15(1), 109-124."
+paperurl: "https://drive.google.com/file/d/1wZq0nJphg5X0Nf-qhPeDlnc6ZLCvcE1I/view"
 ---
