@@ -8,7 +8,7 @@ date: 2026-09-01
 location: "Lucerne, Switzerland"
 ---
 
-**Level:** MA students
+**Level:** BA & MA students
 **Credits:** 6 ECTS credits
 
 BA/MA-level course on citizenship, democratic participation, digital society.
