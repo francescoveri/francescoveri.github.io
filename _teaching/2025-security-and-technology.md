@@ -8,6 +8,6 @@ date: 2025-09-01
 location: "Australia"
 ---
 
-**Level:** BA/MA students
+**Level:** MA students
 
 Course examining the relationship between security, artificial intelligence, political behaviour, and contemporary governance.
