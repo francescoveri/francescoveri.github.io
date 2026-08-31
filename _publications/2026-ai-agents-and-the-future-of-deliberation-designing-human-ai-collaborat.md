@@ -6,4 +6,5 @@ permalink: /publication/ai-agents-and-the-future-of-deliberation-designing-human
 date: 2026-01-01
 venue: "CHI EA'26"
 citation: "Zhang, Weiyu, Shunyi Yeo, Simon Perrault, Jiaxin Pei, Anna De Liddo, Francesco Veri, Maurice Flechtner, and Horacio Saggion (2026). AI Agents and the Future of Deliberation: Designing Human-AI Collaboration for Democratic Dialogue. CHI EA'26."
+pageurl: "https://dl.acm.org/doi/pdf/10.1145/3772363.3790075"
 ---
