@@ -102,6 +102,9 @@ publication_category:
   software:
     title: 'Software'
 
+  reports:
+    title: 'Reports'
+
 # Site Settings
 teaser                   :  # filename of teaser fallback teaser image placed in /images/ for social media previews
 breadcrumbs              : false # true, false (default)
