@@ -6,5 +6,5 @@ permalink: /publication/the-domestic-democratic-peace-how-democracy-constrains-p
 date: 2023-01-01
 venue: "International Political Science Review"
 citation: "Veri, Francesco and Sass Jensen (2023). The Domestic Democratic Peace: How Democracy Constrains Political Violence. International Political Science Review, 44(5), 676-693."
-pageurl: "https://journals.sagepub.com/doi/abs/10.1177/01925121221092391"
+paperurl: "https://journals.sagepub.com/doi/abs/10.1177/01925121221092391"
 ---
