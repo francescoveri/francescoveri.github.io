@@ -1,5 +1,5 @@
 ---
-title: "Citizenship and Digital Society"
+title: "Citizenship Studies"
 collection: teaching
 type: "University course"
 permalink: /teaching/2026-citizenship-and-digital-society
@@ -11,4 +11,4 @@ location: "Lucerne, Switzerland"
 **Level:** MA students
 **Credits:** 6 ECTS credits
 
-Master-level course on citizenship, democratic participation, digital society, and the implications of emerging technologies for democratic governance.
+BA/MA-level course on citizenship, democratic participation, digital society.
