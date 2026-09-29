@@ -5,39 +5,132 @@
   var SUPABASE_URL = "https://uleyuztknttexfeejsiv.supabase.co";
   var SUPABASE_KEY = "sb_publishable_FTz3p__F-mc5r9YRbB_AQA_ebRdWmWi";
 
-  var referrerDomain = null;
+  function deviceType() {
+    var ua = navigator.userAgent || "";
 
-  try {
-    if (document.referrer) {
-      var ref = new URL(document.referrer);
-      if (ref.hostname && ref.hostname !== window.location.hostname) {
-        referrerDomain = ref.hostname.slice(0, 200);
-      }
+    if (/tablet|ipad|playbook|silk/i.test(ua)) {
+      return "tablet";
     }
-  } catch (e) {
-    referrerDomain = null;
+
+    if (/mobile|iphone|ipod|android/i.test(ua)) {
+      return "mobile";
+    }
+
+    return "desktop";
   }
 
-  var payload = {
-    page_path: (window.location.pathname || "/").slice(0, 300),
-    referrer_domain: referrerDomain
-  };
+  function getReferrerDomain() {
+    try {
+      if (!document.referrer) return null;
 
-  fetch(SUPABASE_URL + "/rest/v1/website_usage_events", {
-    method: "POST",
-    headers: {
-      "apikey": SUPABASE_KEY,
-      "Authorization": "Bearer " + SUPABASE_KEY,
-      "Content-Type": "application/json",
-      "Prefer": "return=minimal"
-    },
-    body: JSON.stringify(payload),
-    keepalive: true
-  }).then(function (response) {
-    if (!response.ok) {
-      console.error("Website analytics failed:", response.status, response.statusText);
-    }
-  }).catch(function (error) {
-    console.error("Website analytics error:", error);
-  });
+      var ref = new URL(document.referrer);
+
+      if (ref.hostname && ref.hostname !== window.location.hostname) {
+        return ref.hostname.slice(0, 200);
+      }
+    } catch (_) {}
+
+    return null;
+  }
+
+  function createPayload() {
+    var timezone = null;
+
+    try {
+      timezone =
+        Intl.DateTimeFormat().resolvedOptions().timeZone || null;
+    } catch (_) {}
+
+    return {
+      page_path:
+        (window.location.pathname || "/").slice(0, 300),
+
+      referrer_domain:
+        getReferrerDomain(),
+
+      timezone:
+        timezone,
+
+      browser_language:
+        navigator.language || null,
+
+      device_type:
+        deviceType(),
+
+      local_timestamp:
+        new Date().toISOString()
+    };
+  }
+
+  function send(payload) {
+    return fetch(
+      SUPABASE_URL + "/rest/v1/website_usage_events",
+      {
+        method: "POST",
+
+        headers: {
+          "apikey": SUPABASE_KEY,
+          "Authorization": "Bearer " + SUPABASE_KEY,
+          "Content-Type": "application/json",
+          "Prefer": "return=minimal"
+        },
+
+        body: JSON.stringify(payload),
+
+        keepalive: true
+      }
+    );
+  }
+
+  var payload = createPayload();
+
+  fetch("https://ipapi.co/json/")
+    .then(function (response) {
+
+      if (!response.ok) {
+        throw new Error("Geo lookup failed");
+      }
+
+      return response.json();
+    })
+
+    .then(function (geo) {
+
+      payload.city =
+        geo.city || null;
+
+      payload.region =
+        geo.region || null;
+
+      payload.country =
+        geo.country_name || null;
+
+      payload.country_code =
+        geo.country_code || null;
+
+      return send(payload);
+    })
+
+    .catch(function () {
+      return send(payload);
+    })
+
+    .then(function (response) {
+
+      if (!response.ok) {
+        console.error(
+          "Website analytics failed:",
+          response.status,
+          response.statusText
+        );
+      }
+    })
+
+    .catch(function (error) {
+      console.error(
+        "Website analytics error:",
+        error
+      );
+    });
+
 })();
