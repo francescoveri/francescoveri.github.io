@@ -188,60 +188,80 @@
   // City/region/country are derived approximately from
   // network location. No IP address is stored in Supabase.
 
-  fetch("https://ipapi.co/json/")
-
+  function addGeoFromIpApi() {
+  return fetch("https://ipapi.co/json/")
     .then(function (response) {
-
       if (!response.ok) {
-        throw new Error(
-          "Geo lookup failed"
-        );
+        throw new Error("ipapi lookup failed");
       }
 
       return response.json();
     })
-
     .then(function (geo) {
+      payload.city = geo.city || null;
+      payload.region = geo.region || null;
+      payload.country = geo.country_name || null;
+      payload.country_code = geo.country_code || null;
 
-      payload.city =
-        geo.city || null;
-
-      payload.region =
-        geo.region || null;
-
-      payload.country =
-        geo.country_name || null;
-
-      payload.country_code =
-        geo.country_code || null;
-
-      return send(payload);
-    })
-
-    .catch(function () {
-
-      // If geolocation fails,
-      // still record the visit.
-      return send(payload);
-    })
-
-    .then(function (response) {
-
-      if (!response.ok) {
-        console.error(
-          "Website analytics failed:",
-          response.status,
-          response.statusText
-        );
-      }
-    })
-
-    .catch(function (error) {
-
-      console.error(
-        "Website analytics error:",
-        error
-      );
+      return true;
     });
+}
 
-})();
+function addGeoFromIpWho() {
+  return fetch("https://ipwho.is/")
+    .then(function (response) {
+      if (!response.ok) {
+        throw new Error("ipwho lookup failed");
+      }
+
+      return response.json();
+    })
+    .then(function (geo) {
+      if (geo.success === false) {
+        throw new Error("ipwho lookup failed");
+      }
+
+      payload.city = geo.city || null;
+      payload.region = geo.region || null;
+      payload.country = geo.country || null;
+      payload.country_code = geo.country_code || null;
+
+      return true;
+    });
+}
+
+// First try ipapi.co.
+// If it fails, try a second provider.
+// If both fail, still record the page visit.
+
+addGeoFromIpApi()
+
+  .catch(function () {
+    return addGeoFromIpWho();
+  })
+
+  .catch(function () {
+    // Geo lookup unavailable.
+    // The visit will still be recorded.
+  })
+
+  .then(function () {
+    return send(payload);
+  })
+
+  .then(function (response) {
+    if (!response.ok) {
+      console.error(
+        "Website analytics failed:",
+        response.status,
+        response.statusText
+      );
+    }
+  })
+
+  .catch(function (error) {
+    console.error(
+      "Website analytics error:",
+      error
+    );
+  });
