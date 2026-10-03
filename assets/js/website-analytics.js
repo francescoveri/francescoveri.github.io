@@ -265,3 +265,5 @@ addGeoFromIpApi()
       error
     );
   });
+
+})();
